@@ -1,0 +1,13 @@
+[Unit]
+Description=Minecraft Service Status Periodic Check Timer
+Requires=minecraft.service
+After=minecraft.service
+
+[Timer]
+OnBootSec=1min
+Unit=mc-watchdog.service
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target
+

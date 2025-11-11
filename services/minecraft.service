@@ -1,0 +1,20 @@
+[Unit]
+Description=Gaming Decent FTB Server
+After=network.target
+
+[Service]
+User=minecraft
+Group=minecraft
+WorkingDirectory=/opt/minecraft/server-files
+
+# This command touches a file on start, resetting our auto-stop timer
+ExecStartPre=/bin/touch /opt/minecraft/last_player.timestamp
+
+ExecStart=/opt/minecraft/server-files/run.sh
+
+Restart=on-failure
+StartLimitIntervalSec=600
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
